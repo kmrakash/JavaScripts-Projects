@@ -9,10 +9,10 @@ GAME FUNCTION:
 */
 
 // Game values
-let min = 1,
-  max = 10,
-  winningNum = 2,
-  guessesLeft = 3;
+let min = getMin(),
+  max = getMax(min),
+  winningNum = getWin(min, max),
+  guessesLeft = Math.floor((max - min) / 2 - 1);
 
 // UI Elemenets
 const game = document.querySelector("#game"),
@@ -34,30 +34,30 @@ guessBtn.addEventListener("click", function () {
   // Validate
   if (isNaN(guess) || guess < min || guess > max) {
     setMessage(`Please enter a number between ${min} and ${max}`, "red");
-  }
-
-  // check if Won
-  if (guess === winningNum) {
-    gameOver(true, `${winningNum} is correct, YOU WON`);
   } else {
-    // Wrong number
-    guessesLeft -= 1;
-    if (guessesLeft === 0) {
-      // Game Over - Lost
-      gameOver(
-        false,
-        `GAME OVER, you lost. The correct number was ${winningNum}`
-      );
+    // check if Won
+    if (guess === winningNum) {
+      gameOver(true, `${winningNum} is correct, YOU WON`);
     } else {
-      // Game continued - answer Wrong
-      guessInput.style.borderColor = "red";
-      guessInput.value = "";
-      setMessage(
-        `${guess} is not correct , ${guessesLeft} guesses left`,
-        "red"
-      );
+      // Wrong number
+      guessesLeft -= 1;
+      if (guessesLeft === 0) {
+        // Game Over - Lost
+        gameOver(
+          false,
+          `GAME OVER, you lost. The correct number was ${winningNum}`
+        );
+      } else {
+        // Game continued - answer Wrong
+        guessInput.style.borderColor = "red";
+        guessInput.value = "";
+        setMessage(
+          `${guess} is not correct , ${guessesLeft} guesses left`,
+          "red"
+        );
 
-      setHint(guess);
+        setHint(guess);
+      }
     }
   }
 });
@@ -88,4 +88,18 @@ function gameOver(won, msg) {
   guessBtn.addEventListener("click", function () {
     location.reload();
   });
+}
+
+// Assign Random Values
+
+function getMin() {
+  return Math.floor(Math.random() * 100);
+}
+
+function getMax(min) {
+  return Math.floor(Math.random() * (100 - min + 1) + min);
+}
+
+function getWin(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
