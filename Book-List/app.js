@@ -34,15 +34,18 @@ class UI {
     div.className = `alert ${className}`;
     div.appendChild(document.createTextNode(message));
 
-    const container = document.getElementById("book-form").parentNode;
-    console.log(container);
-
     const form = document.getElementById("book-form");
-
+    const container = form.parentNode;
     container.insertBefore(div, form);
     setTimeout(() => {
       document.querySelector(".alert").remove();
-    }, 1000);
+    }, 2000);
+  }
+
+  deleteBook(target) {
+    if (target.className === "delete") {
+      target.parentNode.parentNode.remove();
+    }
   }
 }
 
@@ -62,5 +65,12 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
   }
 
   ui.clearFields();
+  e.preventDefault();
+});
+
+document.getElementById("book-list").addEventListener("click", (e) => {
+  const ui = new UI();
+  ui.deleteBook(e.target);
+  ui.showAlerts("Deleted Successfully", "success");
   e.preventDefault();
 });
