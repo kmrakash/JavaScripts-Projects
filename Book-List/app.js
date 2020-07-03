@@ -45,6 +45,7 @@ class UI {
   deleteBook(target) {
     if (target.className === "delete") {
       target.parentNode.parentNode.remove();
+      this.showAlerts("Deleted Successfully", "success");
     }
   }
 }
@@ -71,6 +72,5 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
 document.getElementById("book-list").addEventListener("click", (e) => {
   const ui = new UI();
   ui.deleteBook(e.target);
-  ui.showAlerts("Deleted Successfully", "success");
   e.preventDefault();
 });
