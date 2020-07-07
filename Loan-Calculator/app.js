@@ -31,6 +31,7 @@ function calculateResult() {
     document.getElementById("loading").style.display = "none";
   } else {
     showError("Please check your number");
+    document.getElementById("loading").style.display = "none";
   }
 
   //   amount.value = "";
