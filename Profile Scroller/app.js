@@ -78,7 +78,7 @@ function prevProfile() {
 
 // Profile Iterator
 function profileIterator(profile) {
-  let nextIndex = 0;
+  let nextIndex = -1;
 
   return {
     next: function () {
