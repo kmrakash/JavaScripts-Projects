@@ -14,6 +14,7 @@ This repository is consist of projects build on vanilla javaScripts . No Frame w
 - [Loan-Calculator](https://github.com/kmrakash/JavaScripts-Projects/tree/master/Loan-Calculator)
 - [Github Finder](https://github.com/kmrakash/JavaScripts-Projects/tree/master/Github%20Finder)
 - [Book List](https://github.com/kmrakash/JavaScripts-Projects/tree/master/Book-List)
+- [Profile Scroller](https://github.com/kmrakash/JavaScripts-Projects/tree/master/Profile%20Scroller)
 
 ## Contribution
 
